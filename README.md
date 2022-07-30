@@ -1,6 +1,12 @@
+開発するにはコンテナに入ってやるのが楽
+
 1. `docker compose up -d`でdockerコンテナを起動
 2. `docker compose exec cake_scrape bash`でコンテナ内に入る
-3. コンテナに入った場所（~/app）で`python patisserie_search.py`
 
-ケーk
-スクレイピングが始まります
+コンテナに入った後、以下の操作でスクレイピングが始まります
+
+3. コンテナに入った場所（~/app）で`python patisserie_search.py`で実行
+
+結果は appフォルダ内の pattisseries.csv
+
+現在のファイルは7/30（土）時点

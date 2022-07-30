@@ -1,0 +1,11 @@
+services:
+  cake_scrape:
+    build: .
+    container_name: 'cake_scrape'
+    working_dir: '/root/app'
+    tty: true
+    volumes:
+      - ./app:/root/app
+    ports:
+      - 80:5004
+      - 8080:8080
