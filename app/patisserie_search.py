@@ -140,9 +140,9 @@ def get_individuals():
       price_lunch = _get_el('.rdheader-budget__icon--lunch a')
       star = _get_el('.rdheader-rating__score-val-dtl')
       address = ' '.join(_get_els('.rstinfo-table__address span'))
-      tel = _get_el('rstdtl-side-yoyaku__tel-number')
-      reviews = _get_el('rdheader-rating__review-target em')
-      bookmarks = _get_el('rdheader-rating__hozon-target em')
+      tel = _get_el('.rstdtl-side-yoyaku__tel-number')
+      reviews = _get_el('.rdheader-rating__review-target em')
+      bookmarks = _get_el('.rdheader-rating__hozon-target em')
       menu_url = url + 'dtlmenu'
       photo_out = url + 'dtlphotolst/3/smp2'
       photo_in  = url + 'dtlphotolst/4/smp2'
@@ -167,7 +167,7 @@ def get_individuals():
       ]
       # ,を消去
       l = list(map(lambda x: x.replace(',', ''), l))
-      print(f'{len(csv)}: {l[0]}, {l[1]}, {l[9]}')
+      print(f'{len(csv)}: {l[0]}, {l[1]}, {l[9]}, {l[10]}, {l[11]}, {l[12]}')
       csv.append(l)
 
       time.sleep(5)
