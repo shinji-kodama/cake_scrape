@@ -7,6 +7,6 @@
 
 3. コンテナに入った場所（~/app）で`python patisserie_search.py`で実行
 
-結果は appフォルダ内の pattisseries.csv
-
-現在のファイルは7/30（土）時点
+結果は appフォルダ内の 
+- patisseries.csv         (7/30(土)更新)
+- patisseries_detail.csv  (8/2(火)更新)

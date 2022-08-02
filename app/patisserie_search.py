@@ -177,5 +177,5 @@ def get_individuals():
   create_csv(f_name, csv)
 
 if __name__ == "__main__":
-  # get_patisserie_list()
+  get_patisserie_list()
   get_individuals()
