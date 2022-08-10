@@ -27,10 +27,11 @@ def create_csv(f_name, list):
 # 食べログの検索結果一覧からURLを取得する
 # params: void
 # return: void
-def get_patisserie_list():
+def get_patisserie_list(region):
   csv = [['shop_name', 'url', 'place', 'types', 'star', 'price_dinner', 'price_lunch', 'holiday']]
-
-  base_url = 'https://tabelog.com/tokyo/rstLst/'
+  
+  list_type = '/rstLst/'
+  base_url = 'https://tabelog.com/' + region + list_type
   page = 1
   query = '/?sw=パティスリー'
 
@@ -86,7 +87,7 @@ def get_patisserie_list():
 # urlのcsvから食べログの詳細ページ情報を取得する
 # params: void
 # return: void
-def get_individuals():
+def get_individuals(region):
   def _get_one(soup):
     def _get_one_element(css):
       el = soup.select_one(css)
@@ -173,9 +174,10 @@ def get_individuals():
       time.sleep(5)
   f.close()
 
-  f_name = 'patisseries_detail.csv'
+  f_name = 'patisseries_' + region + '.csv'
   create_csv(f_name, csv)
 
 if __name__ == "__main__":
-  get_patisserie_list()
-  get_individuals()
+  region = 'osaka'
+  get_patisserie_list(region)
+  get_individuals(region)
