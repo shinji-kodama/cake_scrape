@@ -21,6 +21,7 @@ switch($region) {
     break;
   default:
     $f = $fp_t;
+    $region = 'tokyo';
     break;
 }
 
@@ -39,23 +40,25 @@ while(($line = fgetcsv($f)) !== false) {
   <script src="https://cdn.tailwindcss.com"></script>
   <title>Patisseries</title>
 </head>
-<body>
+<body class="bg-teal-50">
 
 <div class="mt-6 px-4 sm:px-6 lg:px-8">
   <div class="sm:flex sm:items-center">
     <div class="sm:flex-auto">
-      <h1 class="text-xl font-semibold text-gray-900">Shop Information</h1>
+      <h1 class="text-xl font-semibold text-gray-900">Shop Information in <?=$region?></h1>
       <p class="mt-2 text-sm text-gray-700">A list of Patisseries searched in 食べログ</p>
+      <p class="text-sm text-gray-60 mt-3">Update</p>
+      <p class="text-xs text-gray-500 ml-3">8/25(木)：csvのダウンロードが正常に機能するようになりました</p>
     </div>
     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
       <a href="./index.php?region=tokyo">
-        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">東京</button>
+        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">東京</button>
       </a>
       <a href="./index.php?region=osaka">
-        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">大阪</button>
+        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">大阪</button>
       </a>
-      <a href="./index.php?region=<?=$region?>">
-        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto">download csv</button>  
+      <a href="./app/patisseries_<?=region?>.csv">
+        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">download csv</button>  
       </a>
     </div>
   </div>
@@ -136,12 +139,12 @@ while(($line = fgetcsv($f)) !== false) {
                   <td class="py-2 pl-3 pr-4 text-right text-xs font-medium sm:pr-6 align-middle w-full">
                     <div class="flex items-center space-x-4">
                       <span class="flex flex-col items-center space-y-2 xl:flex-row xl:space-x-2 xl:space-y-0">
-                        <a href="<?=$data[2]?>" class="text-indigo-600 hover:text-indigo-900 truncate">TOP</a>
-                        <a href="<?=$data[13]?>" class="text-indigo-600 hover:text-indigo-900 truncate">MENU</a>
+                        <a href="<?=$data[2]?>" class="text-teal-600 hover:text-teal-900 truncate">TOP</a>
+                        <a href="<?=$data[13]?>" class="text-teal-600 hover:text-teal-900 truncate">MENU</a>
                       </span>
                       <span class="flex flex-col items-center space-y-2 xl:flex-row xl:space-x-2 xl:space-y-0">
-                        <a href="<?=$data[14]?>" class="text-indigo-600 hover:text-indigo-900 truncate">外観</a>
-                        <a href="<?=$data[15]?>" class="text-indigo-600 hover:text-indigo-900 truncate">内観</a>
+                        <a href="<?=$data[14]?>" class="text-teal-600 hover:text-teal-900 truncate">外観</a>
+                        <a href="<?=$data[15]?>" class="text-teal-600 hover:text-teal-900 truncate">内観</a>
                       </span>
                     </div>
                   </td>
