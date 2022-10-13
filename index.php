@@ -4,26 +4,30 @@ $region = $_GET['region'];
 
 $read_file_t = 'app/patisseries_tokyo.csv';
 $read_file_o = 'app/patisseries_osaka.csv';
+$read_file_c = 'app/patisseries_chiba.csv';
 
 $fp_t = fopen($read_file_t, 'r');
 $fp_o = fopen($read_file_o, 'r');
+$fp_c = fopen($read_file_c, 'r');
 
 $data_t = [];
 
 $f;
 
 switch($region) {
-  case 'tokyo':
-    $f = $fp_t;
+  case 'tokyo': $f = $fp_t;
     break;
-  case 'osaka':
-    $f = $fp_o;
+  case 'osaka': $f = $fp_o;
+    break;
+  case 'chiba': $f = $fp_c;
     break;
   default:
     $f = $fp_t;
     $region = 'tokyo';
     break;
 }
+
+$dl_url = "./app/patisseries_" . $region . ".csv/";
 
 while(($line = fgetcsv($f)) !== false) {
     array_push($data_t, $line);
@@ -48,7 +52,10 @@ while(($line = fgetcsv($f)) !== false) {
       <h1 class="text-xl font-semibold text-gray-900">Shop Information in <?=$region?></h1>
       <p class="mt-2 text-sm text-gray-700">A list of Patisseries searched in 食べログ</p>
       <p class="text-sm text-gray-60 mt-3">Update</p>
+      
+      <p class="text-xs text-gray-500 ml-3">9/30(金)：千葉を追加（千葉・船橋・市川・浦安）</p>
       <p class="text-xs text-gray-500 ml-3">8/25(木)：csvのダウンロードが正常に機能するようになりました</p>
+      
     </div>
     <div class="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
       <a href="./index.php?region=tokyo">
@@ -57,7 +64,11 @@ while(($line = fgetcsv($f)) !== false) {
       <a href="./index.php?region=osaka">
         <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">大阪</button>
       </a>
-      <a href="./app/patisseries_<?=region?>.csv">
+      <a href="./index.php?region=chiba">
+        <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">千葉</button>
+      </a>
+      <?= '<a href="' . $dl_url . '" >' ?>
+      
         <button type="button" class="inline-flex items-center justify-center rounded-md border border-transparent bg-teal-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto">download csv</button>  
       </a>
     </div>
@@ -143,8 +154,8 @@ while(($line = fgetcsv($f)) !== false) {
                         <a href="<?=$data[13]?>" class="text-teal-600 hover:text-teal-900 truncate">MENU</a>
                       </span>
                       <span class="flex flex-col items-center space-y-2 xl:flex-row xl:space-x-2 xl:space-y-0">
-                        <a href="<?=$data[14]?>" class="text-teal-600 hover:text-teal-900 truncate">外観</a>
-                        <a href="<?=$data[15]?>" class="text-teal-600 hover:text-teal-900 truncate">内観</a>
+                        <a href="<?=$data[14]?>" class="text-teal-600 hover:text-teal-900 truncate">内観</a>
+                        <a href="<?=$data[15]?>" class="text-teal-600 hover:text-teal-900 truncate">外観</a>
                       </span>
                     </div>
                   </td>
